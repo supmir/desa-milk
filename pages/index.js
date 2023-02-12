@@ -69,7 +69,7 @@ export default function Home() {
     <div className="grid grid-cols-1 sm:grid-cols-2 px-2 gap-x-2">
       <div className="flex flex-col mx-auto max-h-screen">
         <img
-          src="page-1.jpg"
+          src="page-1.png"
           className="object-contain h-5/6 sm:h-screen mx-auto"
         />
         <div className="text-center visible block sm:hidden">
