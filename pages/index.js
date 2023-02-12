@@ -1,4 +1,5 @@
 import ItemCard from "@/components/itemCard";
+import Head from "next/head";
 import { useState } from "react";
 
 export default function Home() {
@@ -67,6 +68,12 @@ export default function Home() {
   const [cart, setCart] = useState({});
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 px-2 gap-x-2">
+      <Head>
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no"
+        />
+      </Head>
       <div className="flex flex-col mx-auto max-h-screen">
         <img
           src="page-1.png"
