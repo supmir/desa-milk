@@ -73,7 +73,7 @@ export default function Home() {
           className="object-contain h-5/6 sm:h-screen mx-auto"
         />
         <div className="text-center visible block sm:hidden">
-          Select your quantity and click order:
+          Select your quantity and click order
         </div>
       </div>
       <div className="flex flex-col w-full m-auto h-screen sm:overflow-y-scroll">
@@ -99,7 +99,9 @@ export default function Home() {
               const { qty } = value;
               text += `${qty} x ${key}\n`;
             }
-            console.log(text);
+            window.location = `https://wa.me/60138603366?text=${encodeURIComponent(
+              text
+            )}`;
           }}
         >
           Order now
