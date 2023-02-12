@@ -78,9 +78,11 @@ export default function Home() {
             <ItemCard product={product} key={product.id} />
           ))}
         </div>
+        <div className="h-10"></div>
         <div className="border-2 border-black rounded-xl px-2 py-1 mx-auto">
-          WhatsApp
+          Order now
         </div>
+        <div className="h-10"></div>
       </div>
     </div>
   );
