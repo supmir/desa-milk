@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Home() {
   const products = [
     {
-      id: "1",
+      id: "FRMI",
       name: "Fresh / Segar",
       image: "FRESH-MILK-FRONT-VIEW-300x300.png",
       options: [
@@ -38,7 +38,7 @@ export default function Home() {
     //   ],
     // },
     {
-      id: "5",
+      id: "CHMI",
       name: "Chocolate",
       image: "UHT-CHOCOLATE-FRONT-VIEW-300x300.png",
       options: [
@@ -47,7 +47,7 @@ export default function Home() {
       ],
     },
     // {
-    //   id: "6",
+    //   id: "CHSO",
     //   name: "Soy Chocolate",
     //   image: "UHT-CHOCOLATE-SOY-FRONT-VIEW-300x300.png",
     //   options: [
@@ -56,7 +56,7 @@ export default function Home() {
     //   ],
     // },
     {
-      id: "7",
+      id: "DAMI",
       name: "Dates / Kurma",
       image: "UHT-KURMA-FRONT-VIEW-300x300.png",
       options: [
