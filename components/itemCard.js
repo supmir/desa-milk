@@ -11,7 +11,7 @@ export default function ItemCard(props) {
           <div className="text-center">{desc}</div>
           <div className="flex gap-x-1 justify-center"></div>
           <div className="text-center">{price}</div>
-          <div className="flex rounded-full border-gray-600 border-2">
+          <div className="flex rounded-full border-gray-600 border-2 w-2/3 mx-auto">
             <span className="inline-flex items-center px-3 rounded-l-full bg-gray-600 text-white text-sm">
               Qty
             </span>
