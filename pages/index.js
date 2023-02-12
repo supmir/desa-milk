@@ -67,13 +67,19 @@ export default function Home() {
   const [cart, setCart] = useState({});
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
-      <div className="grid mx-auto max-h-screen">
+      <div className="flex flex-col mx-auto max-h-screen">
         <img
           src="page-1.jpg"
           className="object-contain h-5/6 sm:h-screen mx-auto"
         />
+        <div className="text-center visible block sm:hidden">
+          Select your quantity and click order:
+        </div>
       </div>
-      <div className="flex flex-col w-full m-auto">
+      <div className="flex flex-col w-full m-auto h-screen sm:overflow-y-scroll">
+        <div className="text-center visible hidden sm:block">
+          Select your quantity and click order:
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2">
           {products.map((product) => (
             <ItemCard
