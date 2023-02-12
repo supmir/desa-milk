@@ -6,11 +6,11 @@ export default function ItemCard(props) {
   console.log(options);
   return (
     <div className="flex flex-col gap-y-2 border-2 border-black px-1 py-3 h-full justify-center">
-      <img src={`products/${image}`} />
+      <img src={`products/${image}`} alt={`Image of ${name}`} />
       <div className="text-center">{name}</div>
 
       {options.map(({ price, desc }) => (
-        <Fragment>
+        <Fragment key={desc}>
           <div className="flex gap-x-1 justify-center">
             <div>{desc}</div>
             <div>{price}</div>
