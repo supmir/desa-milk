@@ -9,8 +9,8 @@ export default function Home() {
       name: "Fresh / Segar",
       image: "FRESH-MILK-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: "RM5" },
-        { desc: "1000mℓ", price: "RM10" },
+        { desc: "200mℓ", price: "RM3.00" },
+        { desc: "1000mℓ", price: "RM8.90" },
       ],
     },
     // {
@@ -42,8 +42,8 @@ export default function Home() {
       name: "Chocolate",
       image: "UHT-CHOCOLATE-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: "RM5" },
-        { desc: "1000mℓ", price: "RM10" },
+        { desc: "200mℓ", price: "RM3.00" },
+        { desc: "1000mℓ", price: "RM8.90" },
       ],
     },
     // {
@@ -60,8 +60,8 @@ export default function Home() {
       name: "Dates / Kurma",
       image: "UHT-KURMA-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: "RM5" },
-        { desc: "1000mℓ", price: "RM10" },
+        { desc: "200mℓ", price: "RM3.90" },
+        { desc: "1000mℓ", price: "RM9.90" },
       ],
     },
   ];
