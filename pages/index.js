@@ -9,7 +9,7 @@ export default function Home() {
       image: "FRESH-MILK-FRONT-VIEW-300x300.png",
       options: [
         { desc: "200mℓ", price: "RM5" },
-        { desc: "1ℓ", price: "RM10" },
+        { desc: "1000mℓ", price: "RM10" },
       ],
     },
     // {
@@ -18,14 +18,14 @@ export default function Home() {
     //   image: "HENRY-JONES-1L-FRONT-VIEW-300x300.png",
     //   options: [
     //     { desc: "200mℓ", price: "RM5" },
-    //     { desc: "1ℓ", price: "RM10" },
+    //     { desc: "1000mℓ", price: "RM10" },
     //   ],
     // },
     // {
     //   id: "3",
     //   name: "Low Fat",
     //   image: "LOW-FAT-1L-SIDE-VIEW-300x300.png",
-    //   options: [{ desc: "1ℓ", price: "RM10" }],
+    //   options: [{ desc: "1000mℓ", price: "RM10" }],
     // },
     // {
     //   id: "4",
@@ -33,7 +33,7 @@ export default function Home() {
     //   image: "UHT-CAFE-LATTE-200ML-SIDE-VIEW-300x300.png",
     //   options: [
     //     { desc: "200mℓ", price: "RM5" },
-    //     { desc: "1ℓ", price: "RM10" },
+    //     { desc: "1000mℓ", price: "RM10" },
     //   ],
     // },
     {
@@ -42,7 +42,7 @@ export default function Home() {
       image: "UHT-CHOCOLATE-FRONT-VIEW-300x300.png",
       options: [
         { desc: "200mℓ", price: "RM5" },
-        { desc: "1ℓ", price: "RM10" },
+        { desc: "1000mℓ", price: "RM10" },
       ],
     },
     // {
@@ -51,7 +51,7 @@ export default function Home() {
     //   image: "UHT-CHOCOLATE-SOY-FRONT-VIEW-300x300.png",
     //   options: [
     //     { desc: "200mℓ", price: "RM5" },
-    //     { desc: "1ℓ", price: "RM10" },
+    //     { desc: "1000mℓ", price: "RM10" },
     //   ],
     // },
     {
@@ -60,7 +60,7 @@ export default function Home() {
       image: "UHT-KURMA-FRONT-VIEW-300x300.png",
       options: [
         { desc: "200mℓ", price: "RM5" },
-        { desc: "1ℓ", price: "RM10" },
+        { desc: "1000mℓ", price: "RM10" },
       ],
     },
   ];
