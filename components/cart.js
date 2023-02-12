@@ -68,7 +68,7 @@ export default function Cart(props){
       {Object.entries(discounts).map(([key, {name, price}])=>(
         <tr key={key} className="border border-0 border-b-2 border-black bg-amber-100">
           <td className="text-left px-4">{key} - {name}</td>
-          <td/>
+          <td className="text-center"></td>
           <td className="text-right px-4">-RM{(price).toFixed(2)}</td>
         </tr>
       ))}
