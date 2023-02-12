@@ -28,7 +28,7 @@ export default function ItemCard(props) {
                   const qty = e.target.value;
                   setCart({
                     ...cart,
-                    [`${id} - ${desc}`]: {
+                    [`${id}: ${name} - ${desc}`]: {
                       qty: qty,
                     },
                   });

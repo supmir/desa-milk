@@ -85,7 +85,17 @@ export default function Home() {
           ))}
         </div>
         <div className="h-10"></div>
-        <button className="border-2 border-black rounded-xl px-2 py-1 mx-auto">
+        <button
+          className="border-2 border-black rounded-xl px-2 py-1 mx-auto"
+          onClick={() => {
+            let text = "Hello, I would like to order:\n";
+            for (let [key, value] of Object.entries(cart)) {
+              const { qty } = value;
+              text += `${qty} x ${key}\n`;
+            }
+            console.log(text);
+          }}
+        >
           Order now
         </button>
         <div className="h-10"></div>
