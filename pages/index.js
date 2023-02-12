@@ -1,3 +1,4 @@
+import Cart from "@/components/cart";
 import ItemCard from "@/components/itemCard";
 import Head from "next/head";
 import { useState } from "react";
@@ -104,49 +105,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <table className="">
-          <thead>
-            <tr className="border border-0 border-b-4 border-black">
-              <th className="text-left w-full px-4">Item</th>
-              <th className="text-center">Qty</th>
-              <th className="text-right px-4">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              cart // 👈 null and undefined check
-              && Object.keys(cart).length === 0
-              && Object.getPrototypeOf(cart) === Object.prototype && <tr>
-                <td colspan="3" className="text-center">No items added yet...</td>
-              </tr>
-
-            }
-            {Object.entries(cart).map(([key, {name, desc, qty, price}])=>(
-              <tr key={key} className="border border-0 border-b-2 border-black">
-                <td className="text-left px-4">{name} - {desc}</td>
-                <td className="text-center">{qty.toString()}</td>
-                <td className="text-right px-4">RM{(qty*price).toFixed(2)}</td>
-              </tr>
-            ))}
-            <tr>
-              <td>Add {6 - Object.entries(cart).reduce((total, [key, {qty}])=>total+qty, 0).toFixed(0)} more items to get a discount</td>
-            </tr>
-          </tbody>
-            {
-              !(cart // 👈 null and undefined check
-              && Object.keys(cart).length === 0
-              && Object.getPrototypeOf(cart) === Object.prototype) && <tfoot>
-            <tr>
-              <td></td>
-              <td className="text-right font-bold">TOTAL</td>
-              <td className="text-right px-4">
-                RM{Object.entries(cart).reduce((total, [key, {qty,price}])=>total+qty*price, 0).toFixed(2)}
-              </td>
-            </tr>
-          </tfoot>
-
-            }
-        </table>
+        <Cart cart={cart}/>
         <button
           className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 my-3"
           onClick={() => {
