@@ -104,9 +104,8 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="h-10"></div>
         <button
-          className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2"
+          className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 my-3"
           onClick={() => {
             let text = "Hello, I would like to order:\n";
             for (let [key, value] of Object.entries(cart)) {
@@ -132,7 +131,6 @@ export default function Home() {
 
           <div className="my-auto">Order Now / Pesan Sekarang</div>
         </button>
-        <div className="h-10"></div>
       </div>
     </div>
   );
