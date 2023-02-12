@@ -86,7 +86,7 @@ export default function Home() {
           Pilih kuantiti & klik <span className="italic">Pesan Sekarang:</span>
         </div>
       </div>
-      <div className="flex flex-col w-full m-auto h-screen sm:overflow-y-scroll">
+      <div className="flex flex-col w-full m-auto h-auto sm:h-screen sm:overflow-y-scroll justify-center">
         <div className="text-center visible hidden sm:block">
           Select quantity & click <span className="italic">Order Now:</span>
         </div>
