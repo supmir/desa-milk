@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
-      <div className="grid m-auto">
+      <div className="grid mx-auto max-h-screen">
         <img
           src="page-1.jpg"
           className="object-contain h-5/6 sm:h-screen mx-auto"
