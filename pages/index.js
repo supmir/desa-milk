@@ -1,4 +1,5 @@
 import ItemCard from "@/components/itemCard";
+import { useState } from "react";
 
 export default function Home() {
   const products = [
@@ -63,7 +64,7 @@ export default function Home() {
       ],
     },
   ];
-
+  const [cart, setCart] = useState({});
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2">
       <div className="grid mx-auto max-h-screen">
@@ -75,13 +76,18 @@ export default function Home() {
       <div className="flex flex-col w-full m-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 p-2">
           {products.map((product) => (
-            <ItemCard product={product} key={product.id} />
+            <ItemCard
+              product={product}
+              key={product.id}
+              cart={cart}
+              setCart={setCart}
+            />
           ))}
         </div>
         <div className="h-10"></div>
-        <div className="border-2 border-black rounded-xl px-2 py-1 mx-auto">
+        <button className="border-2 border-black rounded-xl px-2 py-1 mx-auto">
           Order now
-        </div>
+        </button>
         <div className="h-10"></div>
       </div>
     </div>

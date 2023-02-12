@@ -1,9 +1,8 @@
 import { Fragment } from "react";
 
 export default function ItemCard(props) {
-  const { product } = props;
-  const { name, image, options } = product;
-  console.log(options);
+  const { product, cart, setCart } = props;
+  const { id, name, image, options } = product;
   return (
     <div className="flex flex-col gap-y-2 border-2 border-black px-1 py-3 h-full justify-center">
       <img src={`products/${image}`} alt={`Image of ${name}`} />
@@ -22,10 +21,18 @@ export default function ItemCard(props) {
               </span>
               <input
                 type="number"
-                id="item"
                 min="0"
                 className="flex-1 block w-full rounded-r-full text-sm border-black px-2"
-                placeholder="5"
+                placeholder="0"
+                onChange={(e) => {
+                  const qty = e.target.value;
+                  setCart({
+                    ...cart,
+                    [`${id} - ${desc}`]: {
+                      qty: qty,
+                    },
+                  });
+                }}
               />
             </div>
           </div>
