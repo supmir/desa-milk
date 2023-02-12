@@ -4,7 +4,7 @@ export default function ItemCard(props) {
   return (
     <div className="flex flex-col border-2 border-[686667] px-1 py-3 h-full justify-center rounded-2xl gap-y-2">
       <img src={`products/${image}`} alt={`Image of ${name}`} />
-      <div className="text-center font-bold">{name}</div>
+      <div className="text-center font-bold uppercase">{name}</div>
 
       {options.map(({ price, desc }) => (
         <div key={desc}>
