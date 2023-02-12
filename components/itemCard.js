@@ -10,7 +10,7 @@ export default function ItemCard(props) {
         <div key={desc}>
           <div className="text-center">{desc}</div>
           <div className="flex gap-x-1 justify-center"></div>
-          <div className="text-center">{price}</div>
+          <div className="text-center">RM{price.toFixed(2)}</div>
           <div className="flex rounded-full border-gray-600 border-2 w-2/3 mx-auto">
             <span className="inline-flex items-center px-3 rounded-l-full bg-gray-600 text-white text-sm">
               Qty
@@ -18,16 +18,33 @@ export default function ItemCard(props) {
             <input
               type="number"
               min="0"
+              max="48"
+              defaultValue="0"
               className="flex-1 block w-full rounded-r-full text-sm border-black px-2 text-center"
               placeholder="0"
+              
               onChange={(e) => {
-                const qty = e.target.value;
-                setCart({
-                  ...cart,
-                  [`${id}: ${name} - ${desc}`]: {
-                    qty: qty,
-                  },
-                });
+                let qty = new Number(e.target.value);
+                qty = qty > 48 ? 48 : (qty < 0 ? 0 : qty);
+                e.target.value = qty
+
+                const index = `${id}: ${name} - ${desc}`
+                if (qty!=0){
+                  setCart({
+                    ...cart,
+                    [index]: {
+                      message: `${qty} x ${id}: ${name} - ${desc}`,
+                      name: name,
+                      desc: desc,
+                      qty: qty,
+                      price: price,
+                    },
+                  });
+                }else{
+                  const oldCart = {...cart};
+                  delete oldCart[index]
+                  setCart(oldCart)
+                }
               }}
             />
           </div>
