@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 
 export default function InputButton(props) {
   const { id, name, cart, setCart, price, desc } = props;
@@ -20,6 +20,7 @@ export default function InputButton(props) {
 
   function updateCart(qty) {
     const index = `${id}: ${name} - ${desc}`;
+    localStorage.setItem(id + desc, qty);
     if (qty != 0) {
       setCart({
         ...cart,
@@ -38,6 +39,9 @@ export default function InputButton(props) {
     }
   }
 
+  useEffect(() => {
+    qtyRef.current.value = localStorage.getItem(id + desc);
+  }, []);
   return (
     <div className="flex rounded-full border-gray-600 border-2 w-2/3 mx-auto">
       <button
