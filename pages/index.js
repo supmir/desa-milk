@@ -1,7 +1,7 @@
 import Cart from "@/components/cart";
 import ItemCard from "@/components/itemCard";
 import Head from "next/head";
-import { useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const nameRef = useRef();
@@ -70,6 +70,12 @@ export default function Home() {
     },
   ];
   const [cart, setCart] = useState({});
+  useEffect(() => {
+    nameRef.current.value = localStorage.getItem("name");
+    addressRef.current.value = localStorage.getItem("address");
+    numberRef.current.value = localStorage.getItem("number");
+  }, []);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 px-2 gap-x-2">
       <Head>
@@ -120,6 +126,9 @@ export default function Home() {
             text += `Name: ${nameRef.current.value}\n`;
             text += `Address: ${addressRef.current.value}\n`;
             text += `Number: ${numberRef.current.value}\n`;
+            localStorage.setItem("name", nameRef.current.value);
+            localStorage.setItem("address", addressRef.current.value);
+            localStorage.setItem("number", numberRef.current.value);
             window.location = `https://wa.me/60138603366?text=${encodeURIComponent(
               text
             )}`;
