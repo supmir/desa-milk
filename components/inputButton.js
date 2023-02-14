@@ -40,12 +40,12 @@ export default function InputButton(props) {
   }
 
   useEffect(() => {
-    qtyRef.current.value = localStorage.getItem(id + desc);
+    // qtyRef.current.value = localStorage.getItem(id + desc);
   }, []);
   return (
-    <div className="flex rounded-full border-gray-600 border-2 w-2/3 mx-auto">
+    <div className="flex w- mx-auto gap-x-1">
       <button
-        className="inline-flex items-center px-3 rounded-l-full bg-gray-600 text-white text-sm"
+        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm"
         onClick={() => {
           const qty = changeValue(-1);
           updateCart(qty);
@@ -58,7 +58,7 @@ export default function InputButton(props) {
         min="0"
         max="48"
         defaultValue="0"
-        className="flex-1 block w-full text-sm border-black px-2 text-center"
+        className="flex-1 block w-full text-sm border-black text-center rounded-full border-gray-600 border-2"
         ref={qtyRef}
         placeholder="0"
         onChange={(e) => {
@@ -69,7 +69,7 @@ export default function InputButton(props) {
         }}
       />
       <button
-        className="inline-flex items-center px-3 rounded-r-full bg-gray-600 text-white text-sm"
+        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm"
         onClick={() => {
           const qty = changeValue(1);
           updateCart(qty);
