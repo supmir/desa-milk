@@ -1,9 +1,12 @@
 import Cart from "@/components/cart";
 import ItemCard from "@/components/itemCard";
 import Head from "next/head";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function Home() {
+  const nameRef = useRef();
+  const addressRef = useRef();
+  const numberRef = useRef();
   const products = [
     {
       id: "FRMI",
@@ -87,11 +90,11 @@ export default function Home() {
           Pilih kuantiti & klik <span className="italic">Pesan Sekarang:</span>
         </div>
       </div>
-      <div className="flex flex-col w-full m-auto h-auto sm:h-screen sm:overflow-y-scroll justify-center">
-        <div className="text-center visible hidden sm:block">
+      <div className="flex flex-col w-full m-auto h-auto sm:h-screen sm:overflow-y-scroll py-4">
+        <div className="text-center hidden sm:block mt-auto">
           Select quantity & click <span className="italic">Order Now:</span>
         </div>
-        <div className="text-center visible hidden sm:block">
+        <div className="text-center hidden sm:block">
           Pilih kuantiti & klik <span className="italic">Pesan Sekarang:</span>
         </div>
         <div className="h-4"></div>
@@ -105,7 +108,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <Cart cart={cart}/>
+        <Cart cart={cart} />
         <button
           className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 my-3"
           onClick={() => {
@@ -114,6 +117,9 @@ export default function Home() {
               const { message } = value;
               text += `${message}\n`;
             }
+            text += `Name: ${nameRef.current.value}\n`;
+            text += `Address: ${addressRef.current.value}\n`;
+            text += `Number: ${numberRef.current.value}\n`;
             window.location = `https://wa.me/60138603366?text=${encodeURIComponent(
               text
             )}`;
@@ -132,6 +138,26 @@ export default function Home() {
           </span>
           <div className="my-auto">Order Now / Pesan Sekarang</div>
         </button>
+        <div className="grid mb-auto">
+          <label>Name</label>
+          <input
+            ref={nameRef}
+            className="border border-gray-600 px-2 py-1 rounded-xl"
+            placeholder="John Doe"
+          />
+          <label>Address</label>
+          <input
+            ref={addressRef}
+            className="border border-gray-600 px-2 py-1 rounded-xl"
+            placeholder="123, Example Road..."
+          />
+          <label>Phone Number</label>
+          <input
+            ref={numberRef}
+            className="border border-gray-600 px-2 py-1 rounded-xl"
+            placeholder="60123456789"
+          />
+        </div>
       </div>
     </div>
   );
