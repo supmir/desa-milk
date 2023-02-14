@@ -5,7 +5,8 @@ export default function InputButton(props) {
   const qtyRef = useRef(null);
 
   function changeValue(amount) {
-    const qty = new Number(qtyRef.current.value) + amount;
+    let qty = new Number(qtyRef.current.value) + amount;
+    qty = qty > 48 ? 48 : qty < 0 ? 0 : qty;
     qtyRef.current.value = qty;
     return qty;
   }
