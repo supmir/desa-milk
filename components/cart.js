@@ -54,7 +54,7 @@ export default function Cart(props) {
   return (
     <table className="">
       <thead>
-        <tr className="border border-0 border-b-4 border-black">
+        <tr className="border-0 border-b-4 border-black">
           <th className="text-left w-full px-4">Item</th>
           <th className="text-center">Qty</th>
           <th className="text-right px-4">Amount</th>
