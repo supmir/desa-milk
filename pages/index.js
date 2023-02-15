@@ -123,23 +123,26 @@ export default function Home() {
           Pilih kuantiti & klik <span className="italic">Pesan Sekarang:</span>
         </div>
       </div>
-      <div className="flex flex-col w-full m-auto h-auto sm:h-screen sm:overflow-y-scroll py-4">
-        <div className="text-center hidden sm:block mt-auto">
-          Select quantity & click <span className="italic">Order Now:</span>
-        </div>
-        <div className="text-center hidden sm:block">
-          Pilih kuantiti & klik <span className="italic">Pesan Sekarang:</span>
-        </div>
-        <div className="h-4"></div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-          {products.map((product) => (
-            <ItemCard
-              product={product}
-              key={product.id}
-              cart={cart}
-              setCart={setCart}
-            />
-          ))}
+      <div className="flex flex-col w-full m-auto h-auto sm:h-screen sm:overflow-y-scroll py-4 gap-y-2">
+        <div className="flex flex-col">
+          <div className="text-center hidden sm:block mt-auto">
+            Select quantity & click <span className="italic">Order Now:</span>
+          </div>
+          <div className="text-center hidden sm:block">
+            Pilih kuantiti & klik{" "}
+            <span className="italic">Pesan Sekarang:</span>
+          </div>
+          <div className="h-4"></div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+            {products.map((product) => (
+              <ItemCard
+                product={product}
+                key={product.id}
+                cart={cart}
+                setCart={setCart}
+              />
+            ))}
+          </div>
         </div>
         <Cart
           cart={cart}
@@ -155,32 +158,32 @@ export default function Home() {
         <div className="grid md:w-2/3 ml-auto">
           <div className="grid grid-cols-2 gap-x-2">
             <div>
-              <label>Name</label>
+              <label>Name / Nama</label>
               <input
                 ref={nameRef}
-                className="border border-gray-600 px-2 py-1 rounded-xl w-full"
+                className="border border-2 border-gray-600 px-2 py-1 rounded-xl w-full"
                 placeholder="John Doe"
               />
             </div>
             <div>
-              <label>Phone Number</label>
+              <label>Phone / Telefon</label>
               <input
                 ref={numberRef}
-                className="border border-gray-600 px-2 py-1 rounded-xl w-full"
+                className="border border-2 border-gray-600 px-2 py-1 rounded-xl w-full"
                 placeholder="60123456789"
               />
             </div>
           </div>
-          <label>Address</label>
+          <label>Address / Alamat</label>
           <input
             ref={addressRef}
-            className="border border-gray-600 px-2 py-1 rounded-xl"
+            className="border border-2 border-gray-600 px-2 py-1 rounded-xl"
             placeholder="123, Example Road..."
           />
         </div>
 
         <button
-          className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 my-3 mb-auto"
+          className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 mb-auto"
           onClick={() => {
             let text = "Hello, I would like to order:\n";
             for (let [key, value] of Object.entries(cart)) {

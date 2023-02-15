@@ -64,7 +64,7 @@ export default function InputButton(props) {
         min="0"
         max="48"
         defaultValue="0"
-        className="flex-1 block w-full text-sm border-black text-center rounded-full border-gray-600 border-2"
+        className="flex-1 block w-full text-sm text-center rounded-full border-gray-600 border-2"
         ref={qtyRef}
         placeholder="0"
         onChange={(e) => {

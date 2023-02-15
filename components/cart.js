@@ -46,7 +46,7 @@ export default function Cart(props) {
       new_discounts = {
         ...discounts,
         DESAFEB6: {
-          name: "10% off (above 6 items)",
+          name: "10% off (6 items or above) / Diskaun 10% (6 barangan atau lebih)",
           price: cartTotal().times(0.1),
         },
       };
@@ -64,10 +64,10 @@ export default function Cart(props) {
   }, [cartTotalState, discountTotalState]);
 
   return (
-    <table className="table-auto">
+    <table className="table-auto border border-0 border-b-2 border-black">
       <thead>
         <tr className="border-0 border-b-4 border-black">
-          <th className="text-left w-full px-4">Item</th>
+          <th className="text-left w-full px-4">Item / Barangan</th>
           <th className="text-center">Qty</th>
           <th className="text-right px-4">Amount</th>
         </tr>
@@ -76,7 +76,7 @@ export default function Cart(props) {
         {cartQty() === 0 && (
           <tr>
             <td colSpan="3" className="text-center">
-              No items added yet...
+              No items added yet... / Belum ada barangan...
             </td>
           </tr>
         )}
@@ -106,16 +106,18 @@ export default function Cart(props) {
         {cartQty() < 6 && cartQty() !== 0 && (
           <tr>
             <td colSpan="3" className="text-center">
-              Add {6 - cartQty()} more items to get a discount
+              Add {6 - cartQty()} more items to get a discount / Tambah{" "}
+              {6 - cartQty()} lagi barangan untuk mendapat diskaun
             </td>
           </tr>
         )}
       </tbody>
       {cartQty() !== 0 && (
         <tfoot>
-          <tr>
-            <td></td>
-            <td className="text-right font-bold">TOTAL</td>
+          <tr className="border border-0 border-y-4 border-black">
+            <td colspan="2" className="text-right font-bold">
+              TOTAL / JUMLAH
+            </td>
             <td className="text-right px-4">RM{total.toFixed(2)}</td>
           </tr>
         </tfoot>
