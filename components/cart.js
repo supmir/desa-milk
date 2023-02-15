@@ -19,7 +19,10 @@ export default function Cart(props) {
       Object.keys(cart).length === 0 &&
       Object.getPrototypeOf(cart) === Object.prototype
       ? 0
-      : Object.entries(cart).reduce((total, [key, { qty }]) => total + qty, 0);
+      : Object.entries(cart).reduce(
+          (total, [key, { qty }]) => total.plus(qty),
+          new Decimal(0)
+        );
   }
 
   function cartTotal() {
@@ -51,6 +54,7 @@ export default function Cart(props) {
         },
       };
     }
+    console.log(new_discounts);
     setDiscounts(new_discounts);
   }, [cart]);
 
