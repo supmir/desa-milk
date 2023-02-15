@@ -1,5 +1,6 @@
 import Cart from "@/components/cart";
 import ItemCard from "@/components/itemCard";
+import { roundDown, roundUp } from "@/site/utils";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 
@@ -181,8 +182,8 @@ export default function Home() {
             let text = "Hello, I would like to order:\n";
             for (let [key, value] of Object.entries(cart)) {
               const { id, qty, name, desc, total } = value;
-              text += `${qty} x ${id}: ${name} - ${desc} : RM${total.toFixed(
-                2
+              text += `${qty} x ${id}: ${name} - ${desc} : RM${roundUp(
+                total
               )}\n`;
             }
             if (
@@ -192,16 +193,16 @@ export default function Home() {
                 Object.getPrototypeOf(discounts) === Object.prototype
               )
             ) {
-              text += `Total before discounts: ${cartTotalState.toFixed(2)}\n`;
+              text += `Total before discounts: ${roundUp(cartTotalState)}\n`;
               text += "Discounts:\n";
               for (let [key, value] of Object.entries(discounts)) {
                 const { name, price } = value;
-                text += `${key}: ${name} : RM${price.toFixed(2)}\n`;
+                text += `${key}: ${name} : RM${roundDown(price)}\n`;
               }
-              text += `Total discount: ${discountTotalState.toFixed(2)}\n`;
+              text += `Total discount: ${roundUp(discountTotalState)}\n`;
             }
 
-            text += `Total: ${total.toFixed(2)}\n`;
+            text += `Total: ${roundUp(total)}\n`;
             text += `Name: ${nameRef.current.value}\n`;
             text += `Address: ${addressRef.current.value}\n`;
             text += `Number: ${numberRef.current.value}\n`;

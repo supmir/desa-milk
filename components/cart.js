@@ -1,3 +1,4 @@
+import { roundDown, roundUp } from "@/site/utils";
 import { useEffect, useState } from "react";
 
 export default function Cart(props) {
@@ -47,6 +48,8 @@ export default function Cart(props) {
   }
 
   useEffect(() => {
+    const tempCartTotal = cartTotal();
+    setCartTotalState(tempCartTotal);
     if (cartQty() >= 6) {
       setDiscounts({
         ...discounts,
@@ -58,10 +61,13 @@ export default function Cart(props) {
     } else {
       setDiscounts({});
     }
-    setCartTotalState(cartTotal());
-    setDiscountTotalState(discountTotal());
-    setTotal(cartTotal() - discountTotal());
+    const tempDiscount = discountTotal();
+    setDiscountTotalState(tempDiscount);
   }, [cart]);
+
+  useEffect(() => {
+    setTotal(cartTotal() - discountTotal());
+  }, [cartTotalState, discountTotalState]);
 
   return (
     <table className="table-auto">
@@ -86,7 +92,7 @@ export default function Cart(props) {
               {name} - {desc}
             </td>
             <td className="text-center">{qty.toString()}</td>
-            <td className="text-right px-4">RM{total.toFixed(2)}</td>
+            <td className="text-right px-4">RM{roundUp(total)}</td>
           </tr>
         ))}
         {Object.entries(discounts).map(([key, { name, price }]) => (
@@ -99,7 +105,7 @@ export default function Cart(props) {
             </td>
             <td className="text-center"></td>
             <td className="text-right px-4 whitespace-nowrap">
-              -RM{price.toFixed(2)}
+              -RM{roundDown(price)}
             </td>
           </tr>
         ))}
@@ -116,7 +122,7 @@ export default function Cart(props) {
           <tr>
             <td></td>
             <td className="text-right font-bold">TOTAL</td>
-            <td className="text-right px-4">RM{total.toFixed(2)}</td>
+            <td className="text-right px-4">RM{roundUp(total)}</td>
           </tr>
         </tfoot>
       )}
