@@ -1,5 +1,6 @@
 import { Decimal } from "decimal.js";
 import { useRef, useEffect } from "react";
+import { PlusIcon, MinusIcon } from "@heroicons/react/24/solid";
 
 export default function InputButton(props) {
   const { id, name, cart, setCart, price, desc } = props;
@@ -50,13 +51,13 @@ export default function InputButton(props) {
   return (
     <div className="flex w- mx-auto gap-x-1">
       <button
-        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm"
+        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm p-1"
         onClick={() => {
           const qty = changeValue(-1);
           updateCart(qty);
         }}
       >
-        -
+        <MinusIcon />
       </button>
       <input
         type="number"
@@ -74,13 +75,13 @@ export default function InputButton(props) {
         }}
       />
       <button
-        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm"
+        className="inline items-center w-8 h-8 text-center rounded-full bg-gray-600 text-white text-sm p-1"
         onClick={() => {
           const qty = changeValue(1);
           updateCart(qty);
         }}
       >
-        +
+        <PlusIcon />
       </button>
     </div>
   );
