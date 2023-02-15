@@ -182,23 +182,29 @@ export default function Home() {
           <div className="my-auto">Order Now / Pesan Sekarang</div>
         </button>
         <div className="grid mb-auto">
-          <label>Name</label>
-          <input
-            ref={nameRef}
-            className="border border-gray-600 px-2 py-1 rounded-xl"
-            placeholder="John Doe"
-          />
+          <div className="grid grid-cols-2 gap-x-2">
+            <div>
+              <label>Name</label>
+              <input
+                ref={nameRef}
+                className="border border-gray-600 px-2 py-1 rounded-xl w-full"
+                placeholder="John Doe"
+              />
+            </div>
+            <div>
+              <label>Phone Number</label>
+              <input
+                ref={numberRef}
+                className="border border-gray-600 px-2 py-1 rounded-xl w-full"
+                placeholder="60123456789"
+              />
+            </div>
+          </div>
           <label>Address</label>
           <input
             ref={addressRef}
             className="border border-gray-600 px-2 py-1 rounded-xl"
             placeholder="123, Example Road..."
-          />
-          <label>Phone Number</label>
-          <input
-            ref={numberRef}
-            className="border border-gray-600 px-2 py-1 rounded-xl"
-            placeholder="60123456789"
           />
         </div>
       </div>
