@@ -11,8 +11,7 @@ export default function ItemCard(props) {
 
       {options.map(({ price, desc }) => (
         <div key={desc}>
-          <div className="text-center">{desc}</div>
-          <div className="flex gap-x-1 justify-center"></div>
+          <div className="text-center italic">{desc}</div>
           <div className="text-center">RM{price.toFixed(2)}</div>
           <InputButton
             id={id}
