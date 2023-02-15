@@ -1,4 +1,3 @@
-import { roundUp } from "@/site/utils";
 import InputButton from "./inputButton";
 
 export default function ItemCard(props) {
@@ -14,7 +13,7 @@ export default function ItemCard(props) {
         <div key={desc}>
           <div className="text-center">{desc}</div>
           <div className="flex gap-x-1 justify-center"></div>
-          <div className="text-center">RM{roundUp(price)}</div>
+          <div className="text-center">RM{price.toFixed(2)}</div>
           <InputButton
             id={id}
             name={name}

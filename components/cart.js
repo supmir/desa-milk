@@ -1,4 +1,4 @@
-import { roundDown, roundUp } from "@/site/utils";
+import Decimal from "decimal.js";
 import { useEffect, useState } from "react";
 
 export default function Cart(props) {
@@ -24,49 +24,43 @@ export default function Cart(props) {
 
   function cartTotal() {
     return cartQty() === 0
-      ? 0
+      ? new Decimal(0)
       : Object.entries(cart).reduce(
-          (total, [key, { qty, price }]) => total + qty * price,
-          0
+          (total, [key, { qty, price }]) => total.plus(qty.times(price)),
+          new Decimal(0)
         );
-  }
-  function discountQty() {
-    return discounts &&
-      Object.keys(discounts).length === 0 &&
-      Object.getPrototypeOf(discounts) === Object.prototype
-      ? 0
-      : Object.entries(discounts).reduce((total, [key, {}]) => total + 1, 0);
   }
 
   function discountTotal() {
-    return discountQty() === 0
-      ? 0
-      : Object.entries(discounts).reduce(
-          (total, [key, { price }]) => total + price,
-          0
-        );
+    return Object.entries(discounts).reduce(
+      (total, [key, { price }]) => total.plus(price),
+      new Decimal(0)
+    );
   }
 
   useEffect(() => {
     const tempCartTotal = cartTotal();
     setCartTotalState(tempCartTotal);
+    let new_discounts = {};
     if (cartQty() >= 6) {
-      setDiscounts({
+      new_discounts = {
         ...discounts,
         DESAFEB6: {
           name: "10% off (above 6 items)",
-          price: cartTotal() * 0.1,
+          price: cartTotal().times(0.1),
         },
-      });
-    } else {
-      setDiscounts({});
+      };
     }
-    const tempDiscount = discountTotal();
-    setDiscountTotalState(tempDiscount);
+    setDiscounts(new_discounts);
   }, [cart]);
 
   useEffect(() => {
-    setTotal(cartTotal() - discountTotal());
+    const tempDiscount = discountTotal();
+    setDiscountTotalState(tempDiscount);
+  }, [discounts]);
+
+  useEffect(() => {
+    setTotal(cartTotal().minus(discountTotal()));
   }, [cartTotalState, discountTotalState]);
 
   return (
@@ -92,7 +86,7 @@ export default function Cart(props) {
               {name} - {desc}
             </td>
             <td className="text-center">{qty.toString()}</td>
-            <td className="text-right px-4">RM{roundUp(total)}</td>
+            <td className="text-right px-4">RM{total.toFixed(2)}</td>
           </tr>
         ))}
         {Object.entries(discounts).map(([key, { name, price }]) => (
@@ -105,7 +99,7 @@ export default function Cart(props) {
             </td>
             <td className="text-center"></td>
             <td className="text-right px-4 whitespace-nowrap">
-              -RM{roundDown(price)}
+              -RM{price.toFixed(2)}
             </td>
           </tr>
         ))}
@@ -122,7 +116,7 @@ export default function Cart(props) {
           <tr>
             <td></td>
             <td className="text-right font-bold">TOTAL</td>
-            <td className="text-right px-4">RM{roundUp(total)}</td>
+            <td className="text-right px-4">RM{total.toFixed(2)}</td>
           </tr>
         </tfoot>
       )}

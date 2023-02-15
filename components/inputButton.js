@@ -1,3 +1,4 @@
+import { Decimal } from "decimal.js";
 import { useRef, useEffect } from "react";
 
 export default function InputButton(props) {
@@ -5,14 +6,14 @@ export default function InputButton(props) {
   const qtyRef = useRef(null);
 
   function changeValue(amount) {
-    let qty = new Number(qtyRef.current.value) + amount;
+    let qty = new Decimal(qtyRef.current.value).plus(new Decimal(amount));
     qty = qty > 48 ? 48 : qty < 0 ? 0 : qty;
     qtyRef.current.value = qty;
     return qty;
   }
 
   function setValue() {
-    let qty = new Number(qtyRef.current.value);
+    let qty = new Decimal(qtyRef.current.value || 0);
     qty = qty > 48 ? 48 : qty < 0 ? 0 : qty;
     qtyRef.current.value = qty;
     return qty;
@@ -25,13 +26,15 @@ export default function InputButton(props) {
       setCart({
         ...cart,
         [index]: {
-          message: `${qty} x ${id}: ${name} - ${desc} : RM${qty * price}`,
+          message: `${qty} x ${id}: ${name} - ${desc} : RM${qty
+            .times(price)
+            .toFixed(2)}`,
           id: id,
           name: name,
           desc: desc,
           qty: qty,
           price: price,
-          total: qty * price,
+          total: qty.times(price),
         },
       });
     } else {

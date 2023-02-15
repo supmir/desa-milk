@@ -1,6 +1,7 @@
 import Cart from "@/components/cart";
 import ItemCard from "@/components/itemCard";
 import { roundDown, roundUp } from "@/site/utils";
+import { Decimal } from "decimal.js";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 
@@ -14,8 +15,8 @@ export default function Home() {
       name: "Fresh / Segar",
       image: "FRESH-MILK-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: 3 },
-        { desc: "1000mℓ", price: 8.9 },
+        { desc: "200mℓ", price: new Decimal("3.00") },
+        { desc: "1000mℓ", price: new Decimal("8.90") },
       ],
     },
     // {
@@ -47,8 +48,8 @@ export default function Home() {
       name: "Chocolate",
       image: "UHT-CHOCOLATE-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: 3 },
-        { desc: "1000mℓ", price: 8.9 },
+        { desc: "200mℓ", price: new Decimal("3.00") },
+        { desc: "1000mℓ", price: new Decimal("8.90") },
       ],
     },
     // {
@@ -65,16 +66,18 @@ export default function Home() {
       name: "Dates / Kurma",
       image: "UHT-KURMA-FRONT-VIEW-300x300.png",
       options: [
-        { desc: "200mℓ", price: 3.9 },
-        { desc: "1000mℓ", price: 9.9 },
+        { desc: "200mℓ", price: new Decimal("3.90") },
+        { desc: "1000mℓ", price: new Decimal("9.90") },
       ],
     },
   ];
   const [cart, setCart] = useState({});
   const [discounts, setDiscounts] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [cartTotalState, setCartTotalState] = useState(0);
-  const [discountTotalState, setDiscountTotalState] = useState(0);
+  const [total, setTotal] = useState(new Decimal("0.00"));
+  const [cartTotalState, setCartTotalState] = useState(new Decimal("0.00"));
+  const [discountTotalState, setDiscountTotalState] = useState(
+    new Decimal("0.00")
+  );
 
   useEffect(() => {
     nameRef.current.value = localStorage.getItem("name");
