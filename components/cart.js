@@ -116,7 +116,7 @@ export default function Cart(props) {
           <tr>
             <td></td>
             <td className="text-right font-bold">TOTAL</td>
-            <td className="text-right px-4">RM{total.toFixed()}</td>
+            <td className="text-right px-4">RM{total.toFixed(2)}</td>
           </tr>
         </tfoot>
       )}
