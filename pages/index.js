@@ -70,6 +70,11 @@ export default function Home() {
     },
   ];
   const [cart, setCart] = useState({});
+  const [discounts, setDiscounts] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [cartTotalState, setCartTotalState] = useState(0);
+  const [discountTotalState, setDiscountTotalState] = useState(0);
+
   useEffect(() => {
     nameRef.current.value = localStorage.getItem("name");
     addressRef.current.value = localStorage.getItem("address");
@@ -114,15 +119,44 @@ export default function Home() {
             />
           ))}
         </div>
-        <Cart cart={cart} />
+        <Cart
+          cart={cart}
+          discounts={discounts}
+          setDiscounts={setDiscounts}
+          cartTotalState={cartTotalState}
+          setCartTotalState={setCartTotalState}
+          discountTotalState={discountTotalState}
+          setDiscountTotalState={setDiscountTotalState}
+          total={total}
+          setTotal={setTotal}
+        />
         <button
           className="rounded-xl px-2 py-1 mx-auto w-full flex justify-center bg-gray-600 text-white gap-x-2 my-3"
           onClick={() => {
             let text = "Hello, I would like to order:\n";
             for (let [key, value] of Object.entries(cart)) {
-              const { message } = value;
-              text += `${message}\n`;
+              const { id, qty, name, desc, total } = value;
+              text += `${qty} x ${id}: ${name} - ${desc} : RM${total.toFixed(
+                2
+              )}\n`;
             }
+            if (
+              !(
+                discounts && // 👈 null and undefined check
+                Object.keys(discounts).length === 0 &&
+                Object.getPrototypeOf(discounts) === Object.prototype
+              )
+            ) {
+              text += `Total before discounts: ${cartTotalState.toFixed(2)}\n`;
+              text += "Discounts:\n";
+              for (let [key, value] of Object.entries(discounts)) {
+                const { name, price } = value;
+                text += `${key}: ${name} : RM${price.toFixed(2)}\n`;
+              }
+              text += `Total discount: ${discountTotalState.toFixed(2)}\n`;
+            }
+
+            text += `Total: ${total.toFixed(2)}\n`;
             text += `Name: ${nameRef.current.value}\n`;
             text += `Address: ${addressRef.current.value}\n`;
             text += `Number: ${numberRef.current.value}\n`;

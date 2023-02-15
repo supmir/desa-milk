@@ -1,8 +1,17 @@
 import { useEffect, useState } from "react";
 
 export default function Cart(props) {
-  const { cart, setCart } = props;
-  const [discounts, setDiscounts] = useState([]);
+  const {
+    cart,
+    cartTotalState,
+    setCartTotalState,
+    discounts,
+    setDiscounts,
+    discountTotalState,
+    setDiscountTotalState,
+    total,
+    setTotal,
+  } = props;
 
   function cartQty() {
     return cart &&
@@ -49,6 +58,9 @@ export default function Cart(props) {
     } else {
       setDiscounts({});
     }
+    setCartTotalState(cartTotal());
+    setDiscountTotalState(discountTotal());
+    setTotal(cartTotal() - discountTotal());
   }, [cart]);
 
   return (
@@ -102,9 +114,7 @@ export default function Cart(props) {
           <tr>
             <td></td>
             <td className="text-right font-bold">TOTAL</td>
-            <td className="text-right px-4">
-              RM{(cartTotal() - discountTotal()).toFixed(2)}
-            </td>
+            <td className="text-right px-4">RM{total}</td>
           </tr>
         </tfoot>
       )}

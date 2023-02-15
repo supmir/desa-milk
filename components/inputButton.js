@@ -25,11 +25,13 @@ export default function InputButton(props) {
       setCart({
         ...cart,
         [index]: {
-          message: `${qty} x ${id}: ${name} - ${desc}`,
+          message: `${qty} x ${id}: ${name} - ${desc} : RM${qty * price}`,
+          id: id,
           name: name,
           desc: desc,
           qty: qty,
           price: price,
+          total: qty * price,
         },
       });
     } else {
