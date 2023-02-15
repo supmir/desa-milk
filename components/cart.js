@@ -64,7 +64,7 @@ export default function Cart(props) {
   }, [cart]);
 
   return (
-    <table className="">
+    <table className="table-auto">
       <thead>
         <tr className="border-0 border-b-4 border-black">
           <th className="text-left w-full px-4">Item</th>
@@ -80,13 +80,13 @@ export default function Cart(props) {
             </td>
           </tr>
         )}
-        {Object.entries(cart).map(([key, { name, desc, qty, price }]) => (
+        {Object.entries(cart).map(([key, { name, desc, qty, total }]) => (
           <tr key={key} className="border border-0 border-b-2 border-black">
             <td className="text-left px-4">
               {name} - {desc}
             </td>
             <td className="text-center">{qty.toString()}</td>
-            <td className="text-right px-4">RM{(qty * price).toFixed(2)}</td>
+            <td className="text-right px-4">RM{total.toFixed(2)}</td>
           </tr>
         ))}
         {Object.entries(discounts).map(([key, { name, price }]) => (
@@ -98,7 +98,9 @@ export default function Cart(props) {
               {key} - {name}
             </td>
             <td className="text-center"></td>
-            <td className="text-right px-4">-RM{price.toFixed(2)}</td>
+            <td className="text-right px-4 whitespace-nowrap">
+              -RM{price.toFixed(2)}
+            </td>
           </tr>
         ))}
         {cartQty() < 6 && cartQty() !== 0 && (
@@ -114,7 +116,7 @@ export default function Cart(props) {
           <tr>
             <td></td>
             <td className="text-right font-bold">TOTAL</td>
-            <td className="text-right px-4">RM{total}</td>
+            <td className="text-right px-4">RM{total.toFixed()}</td>
           </tr>
         </tfoot>
       )}
